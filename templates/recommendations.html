@@ -1,0 +1,88 @@
+
+<html>
+ 
+<head>
+    
+
+    <title>Système de recommendation pour un utilisateur</title>
+    <h1>Système de recommendation pour un utilisateur</h1>
+    <h4>Il y a {{ nbusers}} utilisateurs enregistrés </h4>
+    <h4>Il y a {{ nbarticles }} articles disponibles dans la bibliothèque </h4>
+    
+    <style>
+        div {
+            width: 600px;
+            border: 5px solid green;
+            padding: 10px;
+            margin-bottom: 1px;
+        }
+    </style>
+    
+
+</head>
+ 
+<body>
+  
+    <div>
+        <h2>A qui souhaitez vous recommander 5 articles à lire ?</h2>
+        <form method="POST"
+              action="{{ url_for('predict_post') }}">
+            <input type="number"
+                   name="message"
+                   placeholder="Id de l'utilisateur">
+            <button type="submit">Recommander</button> 
+        </form> 
+        
+        
+        {% if recoms %}
+    
+        <h4>Voici les 5 articles recommandés pour l'utilisateur {{ userID }} :</h4>
+            {{ recoms }}
+  
+        {% endif %}
+    </div>
+    
+   <div>
+        <h2>Ajouter un nouvel article à la bibliothèque (>{{max_article_nb}}) :</h2>
+        
+        <form method="POST"
+              action="{{ url_for('ajout_article') }}">
+            <input type="number"
+                   name="message"
+                   placeholder="Numéro de l'article">
+            <button type="submit">Ajouter</button> 
+        </form> 
+        <h4><i>Cela lancera un réentrainement du modèle pour la prise en compte de ce nouvel article</i></h4>
+       
+        {% if newarticle %}
+    
+        <h4>L'article {{ newarticle }} a été ajouté dans la bibliothèque</h4>
+            
+  
+        {% endif %}
+    </div>    
+    
+    <div>
+        <h2>Ajouter un nouvel utilisateur (>{{ max_userid_nb}}):</h2>
+        
+        <form method="POST"
+              action="{{ url_for('ajout_utilisateur') }}">
+            <input type="number"
+                   name="message"
+                   placeholder="id de l'utilisateur">
+            <button type="submit">Ajouter</button> 
+        </form> 
+        <h4><i>Cela lancera un réentrainement du modèle pour la prise en compte de ce nouvel utilisateur</i></h4>
+        
+        {% if newuser %}
+    
+        <h4>L'utilisateur {{ newuser }} a été ajouté dans la liste</h4>
+            
+  
+        {% endif %}
+    </div>           
+
+</body>
+
+ 
+</html>
