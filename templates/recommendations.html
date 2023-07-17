@@ -28,6 +28,8 @@
         <form method="POST"
               action="{{ url_for('predict_post') }}">
             <input type="number"
+                   min=0
+                   max={{nbusers}}
                    name="message"
                    placeholder="Id de l'utilisateur">
             <button type="submit">Recommander</button> 
@@ -43,12 +45,14 @@
     </div>
     
    <div>
-        <h2>Ajouter un nouvel article à la bibliothèque (>{{max_article_nb}}) :</h2>
+        <h2>Ajouter un nouvel article à la bibliothèque :</h2>
         
         <form method="POST"
               action="{{ url_for('ajout_article') }}">
             <input type="number"
                    name="message"
+                   min={{nbarticles}}
+                   max=500000
                    placeholder="Numéro de l'article">
             <button type="submit">Ajouter</button> 
         </form> 
@@ -63,12 +67,13 @@
     </div>    
     
     <div>
-        <h2>Ajouter un nouvel utilisateur (>{{ max_userid_nb}}):</h2>
+        <h2>Ajouter un nouvel utilisateur :</h2>
         
         <form method="POST"
               action="{{ url_for('ajout_utilisateur') }}">
             <input type="number"
                    name="message"
+                   min={{nbusers}}
                    placeholder="id de l'utilisateur">
             <button type="submit">Ajouter</button> 
         </form> 

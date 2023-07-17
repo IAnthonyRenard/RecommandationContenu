@@ -4,10 +4,43 @@ import pickle
 from implicit.bpr import BayesianPersonalizedRanking
 from flask import jsonify
 import json
+from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
 
+#Fonction qui va chercher le plus proche voisin d'un nouvel article généré
 
+def proche_voisin(newarticle,df_embeddings):
+    
+    #Création d'un article avec embedding aléatoire
+    df = pd.DataFrame(np.random.uniform(-1,1,size=(1, 250)))
+    df.index=[newarticle]
+    df = df.astype('float32')
+    
+    #display(df)
+    
+    df_embeddings2=df_embeddings.copy()
 
+    #Renomage des colonne pour être en ligne avec df_embeddings sur les noms
+    df_embeddings2.columns = [x for x in range(250)]
 
+    #instanciation et définition du k
+    knn = KNeighborsClassifier(n_neighbors = 1)
+
+    #training
+    #knn.fit(df_embeddings2,df_embeddings2.index)
+    knn.fit(df_embeddings2,df_embeddings2.index)
+
+    #Lancement de la prédiction
+    y=knn.predict(df.to_numpy())
+    y=y[0]
+    print("L'article le plus proche de",newarticle,"est :", y)
+
+    #Extrait du plus proche voisin
+    #df_tmp=df_embeddings2.loc[df_embeddings2.index==y]
+    
+    #display(df_tmp.head())
+    
+    return y
 
 
 
