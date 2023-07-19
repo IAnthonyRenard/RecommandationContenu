@@ -51,10 +51,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: install the package that I was doing manually
+      - name: installation de packages complémentaire (Anthony RENARD)
         run: |
           #sudo apt-get update libgomp1
-          sudo apt-get install --fix-missing libgomp1
+          sudo apt-get install libgomp1
     
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
