@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      #- name: Install dependencies2
-       # run: apt-get install libgomp1.
+      - name: Install dependencies2
+        run: apt-get install libgomp1
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
