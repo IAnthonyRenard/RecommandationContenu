@@ -51,8 +51,8 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-        - name: install the package that I was doing manually
-          run: |
+      - name: install the package that I was doing manually
+        run: |
                   sudo apt-get install libgomp1
     
       - name: Download artifact from build job
