@@ -50,7 +50,7 @@ def predict_post():
         
         #recoms=list(recommendations[0])
     
-    return render_template('recommendations.html', recoms=recommendations, userID=userID,nbusers=nbusers)#,nbarticles=nbarticles, max_article_nb=max_article_nb, max_userid_nb= max_userid_nb)
+    return render_template('recommendations.html', recoms=recommendations, userID=userID,nbusers=nbusers,nbarticles=nbarticles)#,nbarticles=nbarticles, max_article_nb=max_article_nb, max_userid_nb= max_userid_nb)
    
 #utilisation de la méthode POST
 @app.route('/ajout_article', methods=['POST'])
