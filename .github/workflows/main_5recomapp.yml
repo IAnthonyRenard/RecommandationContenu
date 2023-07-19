@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: install the package that I was doing manually
         run: |
-          sudo apt-get update libgomp1
+          #sudo apt-get update libgomp1
           sudo apt-get install libgomp1
     
       - name: Download artifact from build job
