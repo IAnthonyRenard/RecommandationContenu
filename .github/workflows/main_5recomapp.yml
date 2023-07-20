@@ -54,7 +54,7 @@ jobs:
       - name: installation de packages complémentaires (Anthony RENARD)
         run: |
           #sudo apt-get update libgomp1
-          sudo apt-get install libgomp2
+          sudo apt-get install libgomp1
            
     
       - name: Download artifact from build job
