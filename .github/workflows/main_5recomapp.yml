@@ -54,7 +54,8 @@ jobs:
       - name: installation de packages complémentaires (Anthony RENARD)
         run: |
           #sudo apt-get update libgomp1
-          sudo apt-get install libgomp1
+          #sudo apt-get install libgomp1
+           sudo apt-get install libfontconfig1:i386 libXrender1:i386 libsm6:i386 libfreetype6:i386 libglib2.0-0:i386 
     
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
